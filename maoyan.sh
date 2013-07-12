@@ -231,12 +231,12 @@ EOF`
 		sysbzj=`echo ${sysbzj} |awk -F '-*' '{print $2}' |tr -d ' '`
 		###取得数据库中的买持仓
 		sysmai=`${SQLPLUS} -s ${connect} <<EOF
-		select sum(t.volume) from historysettlement.t_investorpositiondtl t where t.tradingday='${TRADINGDAY}' and t.direction='0';
+		select sum(t.btotalamt) from historysettlement.t_investorpositiondtl t where t.tradingday='${TRADINGDAY}';
 EOF`
 		sysmai=`echo ${sysmai} |awk -F '-*' '{print $2}' |tr -d ' '`
 		###取得数据库中的卖持仓
 		sysmai4=`${SQLPLUS} -s ${connect} <<EOF
-		select sum(t.volume) from historysettlement.t_investorpositiondtl t where t.tradingday='${TRADINGDAY}' and t.direction='1';
+		select sum(t.stotalamt) from historysettlement.t_investorpositiondtl t where t.tradingday='${TRADINGDAY}';
 EOF`
 		sysmai4=`echo ${sysmai4} |awk -F '-*' '{print $2}' |tr -d ' '`
 		###取得CSV文件中的权益
