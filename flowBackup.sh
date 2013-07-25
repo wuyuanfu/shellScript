@@ -1,6 +1,8 @@
 #!/bin/bash
 ##Create by wuyuanfu 
 ##Date 2013-07-04
+## 请把脚本放在config机的asptools目录，添加执行权限。
+## 第一次备份之前请先执行flowBackup.sh makebackuppath创建流水备份目录
 BAKPATH=`date +%Y%m%d-%H%M%S`
 ndays=`date -d "-7 day" +%Y%m%d`
 rm ~/shell/BACKUPLISTTMP
