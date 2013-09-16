@@ -36,6 +36,8 @@ then
 			name=`echo $line|awk '{print $1}'`
 			num=`echo $line|awk '{print $2}'`
 			list="${name}${num}"
+###   		调用ecall.sh清理流水
+			ecall.sh clean
 			if [ "${num}" != "csv" ];then
 	#				echo "Create the backup directory [ $(pwd) ] on ${list}" 
 	#				ssh ${list} "mkdir -p ~/${list}/backup/$BAKPATH "
