@@ -1,6 +1,6 @@
 #!/bin/bash
 ##Create by wuyuanfu
-##Date 2013-07-04
+##Date 2013-09-16
 BAKPATH=`date +%Y%m%d-%H%M%S`
 PWD=`cat ~/shell/sh.cfg|grep passwd|cut -d= -f2`
 ndays=`date -d "-7 day" +%Y%m%d`
@@ -31,13 +31,13 @@ then
 	stty echo
 	if [ "$inpwd" = "$PWD" ]
 	then
+###   调用ecall.sh清理流水
+		ecall.sh clean
 		while read line <&3
 		do
 			name=`echo $line|awk '{print $1}'`
 			num=`echo $line|awk '{print $2}'`
 			list="${name}${num}"
-###   		调用ecall.sh清理流水
-			ecall.sh clean
 			if [ "${num}" != "csv" ];then
 	#				echo "Create the backup directory [ $(pwd) ] on ${list}" 
 	#				ssh ${list} "mkdir -p ~/${list}/backup/$BAKPATH "
