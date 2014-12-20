@@ -89,6 +89,7 @@ log 'showall' ./showall
 log 'startall' ./startall
 log 'showall' ./showall
 ((${DEBUG})) || note Ready to Check the fmsys01 SeatStatus
+sleep 10
 log 'Check SeatStatus' ssh fmsys01@fmsys01 "cat ~/uskernel1/bin/Syslog.log |grep SeatStatus"
 banner "End of process: ${CMD}   "
 banner "logfile: ($LOGFILE)"
