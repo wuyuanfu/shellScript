@@ -6,6 +6,10 @@
 #### 20131012-1  更改流水备份目录存放在组件的安装目录的FLOWBACKUP目录
 
 PWD=`cat ~/shell/sh.cfg|grep passwd|cut -d= -f2`
+if [ "x$1" == "x" ];then
+	echo -----Usage: flowRestore.sh TRADINGDAY
+	exit
+fi
 BAKPATH="$1"
 ndays=7
 DATE=`date +%Y%m%d`
@@ -34,6 +38,18 @@ if [ "$1" == "makebackuppath" ];then
 	makebackuppath
 	exit
 fi
+function fileCheck(){
+	for file in $(ssh $1 "ls -l ~/$1/$2/$3/$4/")
+	do
+		md5A=$(ssh $1 "md5sum ~/$1/$2/$3/$4/$file |awk '{print $1}'")
+		md5B=$(ssh $1 "md5sum ~/$1/$4/$file |awk '{print $1}'")
+		if [ "$md5A" != "$md5B" ]
+		then
+			echo ---ERROR: MD5SUM of ~/$1/$4/$file is diff.
+			exit 110
+		fi
+	done
+}
 if [ $PWD != "" ]
 then
 	printf "Please input passwd:\n"
@@ -53,15 +69,19 @@ then
 				echo "Restore the flow and log files of  ${list} ,Please waitting..."
 #################恢复flow流水文件
 				ssh ${list} "cp -vpf ~/${list}/${BACKUPPATH}/${BAKPATH}/flow/* ~/${list}/flow"
+				fileCheck ${list} ${BACKUPPATH} ${BAKPATH} flow
 #################恢复log日志文件				
 				ssh ${list} "cp -vpf ~/${list}/${BACKUPPATH}/${BAKPATH}/log/* ~/${list}/log"
+				fileCheck ${list} ${BACKUPPATH} ${BAKPATH} log				
 				echo -e "Restore ${list}'s flow and log completed"
 			else
 				echo "Restore the flow and log files of  ${name} ,Please waitting..."
 #################恢复flow流水文件
-				ssh ${list} "cp -vpf ~/${list}/${BACKUPPATH}/${BAKPATH}/flow/* ~/${list}/flow"
+				ssh ${name} "cp -vpf ~/${name}/${BACKUPPATH}/${BAKPATH}/flow/* ~/${name}/flow"
+				fileCheck ${name} ${BACKUPPATH} ${BAKPATH} flow				
 #################恢复log日志文件				
-				ssh ${list} "cp -vpf ~/${list}/${BACKUPPATH}/${BAKPATH}/log/* ~/${list}/log"
+				ssh ${name} "cp -vpf ~/${name}/${BACKUPPATH}/${BAKPATH}/log/* ~/${name}/log"
+				fileCheck ${name} ${BACKUPPATH} ${BAKPATH} log				
 				echo -e "Restore ${name}\'s flow and log completed"
 			fi
 			echo -e "\n"

@@ -31,6 +31,18 @@ function makebackuppath(){
 		fi
 	done
 }
+function fileCheck(){
+	for file in $(ssh $1 "ls -l ~/$1/$2/$3/$4/ |awk '{print $9}'")
+	do
+		md5A=$(ssh $1 "md5sum ~/$1/$2/$3/$4/$file |awk '{print $1}'")
+		md5B=$(ssh $1 "md5sum ~/$1/$4/$file |awk '{print $1}'")
+		if [ "$md5A" != "$md5B" ]
+		then
+			echo ---ERROR: MD5SUM of ~/$1/$4/$file is diff.
+			exit 110
+		fi
+	done
+}
 if [ "$1" == "makebackuppath" ];then
 	makebackuppath
 	exit
@@ -53,10 +65,12 @@ if [ -e .backuped_${DATE} ];then
 				ssh ${list} "find ~/${list}/${BACKUPPATH}/* -mtime +${ndays} -type d |xargs rm -rf" 
 ##################备份flow目录
 				ssh ${list} "mkdir -pv ~/${list}/${BACKUPPATH}/${BAKPATH}/flow"
-				ssh ${list} "cp -vp ~/${list}/flow/* ~/${list}/${BACKUPPATH}/${BAKPATH}/flow/"				
+				ssh ${list} "cp -vp ~/${list}/flow/* ~/${list}/${BACKUPPATH}/${BAKPATH}/flow/"	
+				fileCheck ${list} ${BACKUPPATH} ${BAKPATH} flow				
 ##################备份log目录
 				ssh ${list} "mkdir -pv ~/${list}/${BACKUPPATH}/${BAKPATH}/log"
 				ssh ${list} "cp -vp ~/${list}/log/* ~/${list}/${BACKUPPATH}/${BAKPATH}/log"
+				fileCheck ${list} ${BACKUPPATH} ${BAKPATH} log
 				echo -e "Backup ${list}\'s flow and log completed"
 			else
 				echo "Backup the flow and log files of ${name}, Please waitting..."
@@ -65,10 +79,12 @@ if [ -e .backuped_${DATE} ];then
 				ssh ${name} "find ~/${name}/${BACKUPPATH}/* -mtime +${ndays} -type d |xargs rm -rf" 
 ##################备份flow目录
 				ssh ${name} "mkdir -pv ~/${name}/${BACKUPPATH}/${BAKPATH}/flow"
-				ssh ${name} "cp -vp ~/${name}/flow/* ~/${name}/${BACKUPPATH}/${BAKPATH}/flow/"				
+				ssh ${name} "cp -vp ~/${name}/flow/* ~/${name}/${BACKUPPATH}/${BAKPATH}/flow/"
+				fileCheck ${name} ${BACKUPPATH} ${BAKPATH} flow				
 ##################备份log目录
 				ssh ${name} "mkdir -pv ~/${name}/${BACKUPPATH}/${BAKPATH}/log"
 				ssh ${name} "cp -vp ~/${name}/log/* ~/${name}/${BACKUPPATH}/${BAKPATH}/log"
+				fileCheck ${name} ${BACKUPPATH} ${BAKPATH} log
 				echo -e "Backup ${name}'s flow and log completed"		
 			fi
 			echo -e "\n"
@@ -89,10 +105,12 @@ else
 			ssh ${list} "find ~/${list}/${BACKUPPATH}/* -mtime +${ndays} -type d |xargs rm -rf" 
 ##################备份flow目录
 			ssh ${list} "mkdir -pv ~/${list}/${BACKUPPATH}/${BAKPATH}/flow"
-			ssh ${list} "cp -vp ~/${list}/flow/* ~/${list}/${BACKUPPATH}/${BAKPATH}/flow/"				
+			ssh ${list} "cp -vp ~/${list}/flow/* ~/${list}/${BACKUPPATH}/${BAKPATH}/flow/"
+			fileCheck ${list} ${BACKUPPATH} ${BAKPATH} flow			
 ##################备份log目录
 			ssh ${list} "mkdir -pv ~/${list}/${BACKUPPATH}/${BAKPATH}/log"
 			ssh ${list} "cp -vp ~/${list}/log/* ~/${list}/${BACKUPPATH}/${BAKPATH}/log"
+			fileCheck ${list} ${BACKUPPATH} ${BAKPATH} log
 			echo -e "Backup ${list}\'s flow and log completed"
 		else
 			echo "Backup the flow and log files of ${name}, Please waitting..."
@@ -101,10 +119,12 @@ else
 			ssh ${name} "find ~/${name}/${BACKUPPATH}/* -mtime +${ndays} -type d |xargs rm -rf" 
 ##################备份flow目录
 			ssh ${name} "mkdir -pv ~/${name}/${BACKUPPATH}/${BAKPATH}/flow"
-			ssh ${name} "cp -vp ~/${name}/flow/* ~/${name}/${BACKUPPATH}/${BAKPATH}/flow/"				
+			ssh ${name} "cp -vp ~/${name}/flow/* ~/${name}/${BACKUPPATH}/${BAKPATH}/flow/"
+			fileCheck ${name} ${BACKUPPATH} ${BAKPATH} flow			
 ##################备份log目录
 			ssh ${name} "mkdir -pv ~/${name}/${BACKUPPATH}/${BAKPATH}/log"
 			ssh ${name} "cp -vp ~/${name}/log/* ~/${name}/${BACKUPPATH}/${BAKPATH}/log"
+			fileCheck ${name} ${BACKUPPATH} ${BAKPATH} log
 			echo -e "Backup ${name}'s flow and log completed"		
 		fi
 		echo -e "\n"
