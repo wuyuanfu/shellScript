@@ -1,42 +1,46 @@
 #!/bin/bash
-#######################  README | ä½¿ç”¨è¯´æ˜ ################################
-## è¯¥æ–‡ä»¶ç”¨äºCTPç³»ç»Ÿçš„å†’çƒŸæµ‹è¯•,æ¬¢è¿å¤§å®¶æµ‹è¯•å’Œä½¿ç”¨ã€‚å»ºè®®å°†æ–‡ä»¶æ”¾åœ¨configæœåŠ¡å™¨çš„asptoolsç›®å½•ã€‚
-## è„šæœ¬ç¬¬ä¸€æ¬¡æ‰§è¡Œæ—¶ä¼šåˆ¤æ–­~/asptoolsç›®å½•ä¸‹æ˜¯å¦æœ‰logæ–‡ä»¶å¤¹ï¼Œå¦‚æœæ²¡æœ‰ä¼šè‡ªåŠ¨åˆ›å»ºï¼Œç”¨ä»¥å­˜æ”¾å†’çƒŸçš„æ—¥å¿—ä¿¡æ¯ã€‚
-## åŒæ—¶ä¹Ÿä¼šæ£€æµ‹æ˜¯å¦å­˜åœ¨å†’çƒŸç”¨çš„listæ–‡ä»¶,å¦‚æœæ²¡æœ‰ä¼šè‡ªåŠ¨åˆ›å»º,è‡ªåŠ¨åˆ›å»ºçš„å†’çƒŸç”¨listæ–‡ä»¶åä¸ºlist.maoyan,åªå±è”½
-## tmdb/dbmt/tinitç»„ä»¶,å¦‚æœéœ€è¦å±è”½å…¶ä»–é¢å¤–ç»„ä»¶,è¯·è‡ªè¡Œä¿®æ”¹ã€‚
-## ä½¿ç”¨ä¹‹å‰è¯·å…ˆåœ¨configçš„shellç›®å½•,å‡†å¤‡ä¸¤ä¸ªlistæ–‡ä»¶:${listmy}å’Œ${listsc}
-## 1ã€ ${listmy}æ˜¯å†’çƒŸç”¨çš„listæ–‡ä»¶,å·²ç»æ³¨é‡Šæ‰tmdb/dbmt/tinitæˆ–ç›¸å…³æŠ¥ç›˜å‰ç½®
-##        ${listsc}æ˜¯ç”Ÿäº§ç¯å¢ƒç”¨çš„listæ–‡ä»¶,å·²ç»æ”¾å¼€tmdb/dbmt/tinitç­‰ç»„ä»¶çš„æ³¨é‡Š
-## 2ã€åˆå§‹åŒ–éœ€è¦æ‰‹å·¥è¿›è¡Œ
-## 3ã€èµ„é‡‘å¯¹å¸å¯é€‰æ‹©æ‰‹å·¥è¿›è¡Œæˆ–è‡ªåŠ¨å®Œæˆ
-## 4ã€å¦‚æœé€‰æ‹©è‡ªåŠ¨èµ„é‡‘å¯¹å¸,è¿è¡Œä¹‹å‰éœ€è¦ç¡®è®¤connectä¿¡æ¯æ­£ç¡®
-## 5ã€è‡ªåŠ¨èµ„é‡‘å¯¹å¸éœ€è¦å®‰è£…å¸¦æœ‰sqlpluså·¥å…·çš„oracleå®¢æˆ·ç«¯
-## 6ã€å¯ä»è¿™é‡Œä¸‹è½½oracleå®¢æˆ·ç«¯:http://pan.baidu.com/share/link?shareid=2381059582&uk=3876762999
-## 7ã€ç™¾åº¦ç½‘ç›˜çš„oracleå®¢æˆ·ç«¯æ˜¯64ä½çš„instantå®¢æˆ·ç«¯,ç‰ˆæœ¬æ˜¯11.2.0.3,ä¸Šä¼ è‡³configæœåŠ¡å™¨çš„toolsç›®å½•è§£å‹
-## 8ã€æ ¹æ®å®é™…æƒ…å†µä¿®æ”¹tnsname.oraçš„æ–‡ä»¶å†…å®¹
-## 9ã€ç¨‹åºé—®é¢˜è¯·é€šè¿‡é‚®ä»¶1526361659@qq.comä¸æˆ‘è”ç³»
+#######################  README | Ê¹ÓÃËµÃ÷ ################################
+## ¸ÃÎÄ¼şÓÃÓÚCTPÏµÍ³µÄÃ°ÑÌ²âÊÔ,»¶Ó­´ó¼Ò²âÊÔºÍÊ¹ÓÃ¡£½¨Òé½«ÎÄ¼ş·ÅÔÚconfig·şÎñÆ÷µÄasptoolsÄ¿Â¼¡£
+## ½Å±¾µÚÒ»´ÎÖ´ĞĞÊ±»áÅĞ¶Ï~/asptoolsÄ¿Â¼ÏÂÊÇ·ñÓĞlogÎÄ¼ş¼Ğ£¬Èç¹ûÃ»ÓĞ»á×Ô¶¯´´½¨£¬ÓÃÒÔ´æ·ÅÃ°ÑÌµÄÈÕÖ¾ĞÅÏ¢¡£
+## Í¬Ê±Ò²»á¼ì²âÊÇ·ñ´æÔÚÃ°ÑÌÓÃµÄlistÎÄ¼ş,Èç¹ûÃ»ÓĞ»á×Ô¶¯´´½¨,×Ô¶¯´´½¨µÄÃ°ÑÌÓÃlistÎÄ¼şÃûÎªlist.maoyan,Ö»ÆÁ±Î
+## tmdb/dbmt/tinit×é¼ş,Èç¹ûĞèÒªÆÁ±ÎÆäËû¶îÍâ×é¼ş,Çë×ÔĞĞĞŞ¸Ä¡£
+## Ê¹ÓÃÖ®Ç°ÇëÏÈÔÚconfigµÄshellÄ¿Â¼,×¼±¸Á½¸ölistÎÄ¼ş:${listmy}ºÍ${listsc}
+## 1¡¢ ${listmy}ÊÇÃ°ÑÌÓÃµÄlistÎÄ¼ş,ÒÑ¾­×¢ÊÍµôtmdb/dbmt/tinit»òÏà¹Ø±¨ÅÌÇ°ÖÃ
+##		${listsc}ÊÇÉú²ú»·¾³ÓÃµÄlistÎÄ¼ş,ÒÑ¾­·Å¿ªtmdb/dbmt/tinitµÈ×é¼şµÄ×¢ÊÍ
+## 2¡¢³õÊ¼»¯ĞèÒªÊÖ¹¤½øĞĞ
+## 3¡¢×Ê½ğ¶ÔÕÊ¿ÉÑ¡ÔñÊÖ¹¤½øĞĞ»ò×Ô¶¯Íê³É
+## 4¡¢Èç¹ûÑ¡Ôñ×Ô¶¯×Ê½ğ¶ÔÕÊ,ÔËĞĞÖ®Ç°ĞèÒªÈ·ÈÏconnectĞÅÏ¢ÕıÈ·
+## 5¡¢×Ô¶¯×Ê½ğ¶ÔÕÊĞèÒª°²×°´øÓĞsqlplus¹¤¾ßµÄoracle¿Í»§¶Ë
+## 6¡¢¿É´ÓÕâÀïÏÂÔØoracle¿Í»§¶Ë:http://pan.baidu.com/share/link?shareid=2381059582&uk=3876762999
+## 7¡¢°Ù¶ÈÍøÅÌµÄoracle¿Í»§¶ËÊÇ64Î»µÄinstant¿Í»§¶Ë,°æ±¾ÊÇ11.2.0.3,ÉÏ´«ÖÁconfig·şÎñÆ÷µÄtoolsÄ¿Â¼½âÑ¹
+## 8¡¢¸ù¾İÊµ¼ÊÇé¿öĞŞ¸Ätnsname.oraµÄÎÄ¼şÄÚÈİ
+## 9¡¢³ÌĞòÎÊÌâÇëÍ¨¹ıÓÊ¼ş1526361659@qq.comÓëÎÒÁªÏµ
 ##
 #########################################################################
 ## Edit by: wuyuanfu
 ## Created: 20130607
-## LastEditTime: 20130617
-## Version: 0.5
+## LastEditTime: 20140915 19:35
+## Version: 0.7
 ## Email: 1526361659@qq.com
 ## Changelog:
-## 		20130607		0.1		æ–‡ä»¶å»ºç«‹			
-##		20130612		0.2		å¢åŠ è‡ªåŠ¨èµ„é‡‘å¯¹è´¦
-##		20130613		0.3		å®Œå–„è‡ªåŠ¨èµ„é‡‘å¯¹å¸
-##								è°ƒæ•´æç¤ºä¿¡æ¯æ˜¾ç¤ºæ–¹æ³•
-##		20130614		0.4		å¢åŠ å¯¹listæ–‡ä»¶çš„åˆ¤æ–­
-##								å¢åŠ å†’çƒŸç»“æŸåçš„listæ¢å¤
-##								å¢åŠ äº†èµ„é‡‘å°æ•°ç‚¹çš„æ§åˆ¶å’Œnls_lang
-##		20130617		0.5		è°ƒæ•´è¾“å‡ºä¿¡æ¯,å¹¶æµ‹è¯•éªŒè¯äº†æ‰€æœ‰åŠŸèƒ½
-##
+## 		20130607		0.1		ÎÄ¼ş½¨Á¢			
+##		20130612		0.2		Ôö¼Ó×Ô¶¯×Ê½ğ¶ÔÕË
+##		20130613		0.3		ÍêÉÆ×Ô¶¯×Ê½ğ¶ÔÕÊ
+##								µ÷ÕûÌáÊ¾ĞÅÏ¢ÏÔÊ¾·½·¨
+##		20130614		0.4		Ôö¼Ó¶ÔlistÎÄ¼şµÄÅĞ¶Ï
+##								Ôö¼ÓÃ°ÑÌ½áÊøºóµÄlist»Ö¸´
+##								Ôö¼ÓÁË×Ê½ğĞ¡ÊıµãµÄ¿ØÖÆºÍnls_lang
+##		20130617		0.5		µ÷ÕûÊä³öĞÅÏ¢,²¢²âÊÔÑéÖ¤ÁËËùÓĞ¹¦ÄÜ
+##		20140902		0.6		Ôö¼ÓÍ¶×ÊÕß×Ê½ğ¶ÔÕÊ¹¦ÄÜ
+##		20140915		0.7		ĞŞ¸Ä±¨ÅÌ²âÊÔ·½·¨
+###
+###
+###
 #########################################################################
 DEBUG=-3
 TRADINGDAY=`date +%Y%m%d`
 clear
-echo -ne " è¯·è¾“å…¥å½“å‰çš„äº¤æ˜“æ—¥æœŸ[é»˜è®¤æ—¥æœŸä¸º${TRADINGDAY}]: "
+echo -ne " ÇëÊäÈëµ±Ç°µÄ½»Ò×ÈÕÆÚ[Ä¬ÈÏÈÕÆÚÎª${TRADINGDAY}]: "
 read _date
 if [ ! -n ${_date} ];then
 	TRADINGDAY=${_date}
@@ -50,10 +54,12 @@ LOGED="tee -a ${LOGFILE}"
 SHOWSYS=~/shell/showall.sh
 STARTSYS=~/shell/startall.sh
 STOPSYS=~/shell/11stop.sh
-### æŒ‡å®šå†’çƒŸå’Œæ­£å¼çš„listæ–‡ä»¶å
+OFFERLIST="shfeoffer shfemdserver cffexoffer ffexmdserver"
+### Ö¸¶¨Ã°ÑÌºÍÕıÊ½µÄlistÎÄ¼şÃû
 listmy=~/shell/list.maoyan
 listsc=~/shell/list.shengchan
-### oracleå®¢æˆ·ç«¯ç›¸å…³å˜é‡
+listbp=~/shell/list.offer
+### oracle¿Í»§¶ËÏà¹Ø±äÁ¿
 connect=system/oracle@asp
 export LD_LIBRARY_PATH=/home/trade/tools/instantclient_11_2_maoyan
 export TNS_ADMIN=/home/trade/tools/instantclient_11_2_maoyan
@@ -62,14 +68,14 @@ export ORACLE_HOME=/home/trade/tools/instantclient_11_2_maoyan
 export NLS_LANG="SIMPLIFIED CHINESE_CHINA.ZHS16GBK"
 SQLPLUS=$ORACLE_HOME/sqlplus
 export PATH=$PATH:/home/trade/tools/instantclient_11_2_maoyan
-### å®šä¹‰é¢œè‰²
-### çº¢è‰²
+### ¶¨ÒåÑÕÉ«
+### ºìÉ«
 red="\033[1;31m"
 bred="\033[1;41m"
-### ç»¿è‰²
+### ÂÌÉ«
 green="\033[1;32m"
 bgreen="\033[1;42m"
-### é»„è‰²
+### »ÆÉ«
 yellow="\033[1;33m"
 byellow="\033[1;43m"
 end="\033[0m"
@@ -79,40 +85,40 @@ function _anykey(){
 	read -s -n1
 	clear
 }
-##æŸ¥çœ‹ç³»ç»ŸçŠ¶æ€
+##²é¿´ÏµÍ³×´Ì¬
 function _systemStatusCheck(){
 	echo -e ""
 	${SHOWSYS}
 	_anykey
 }
-##æ¸…ç†tinitæµæ°´å’Œtkernelçš„dumpæ–‡ä»¶
+##ÇåÀítinitÁ÷Ë®ºÍtkernelµÄdumpÎÄ¼ş
 function _cleanFlowFiles(){
 	test $DEBUG -gt 0  && ssh trade@tinit "ls -l ~/tinit/flow ~/tinit/log"
-	echo -e "\n${green} æŒ‰ä»»æ„é”®åˆ é™¤tinitçš„æµæ°´æ–‡ä»¶...${end}"
+	echo -e "\n${green} °´ÈÎÒâ¼üÉ¾³ıtinitµÄÁ÷Ë®ÎÄ¼ş...${end}"
 	read -s -n1
 	if [ `ssh trade@tinit "ls -l ~/tinit/flow |wc -l"` == 1 ] && [ `ssh trade@tinit "ls -l ~/tinit/log |wc -l"` == 1 ];then
-		echo -e "\n${bgreen} tinitçš„æµæ°´ç›®å½•flowå’Œlogçš„æ–‡ä»¶å·²åˆ é™¤...${end}"
+		echo -e "\n${bgreen} tinitµÄÁ÷Ë®Ä¿Â¼flowºÍlogµÄÎÄ¼şÒÑÉ¾³ı...${end}"
 	else
 		ssh trade@tinit "rm ~/tinit/flow/* ~/tinit/log/*"
 		if [ `ssh trade@tinit "ls -l ~/tinit/flow |wc -l"` == 1 ] && [ `ssh trade@tinit "ls -l ~/tinit/log |wc -l"` == 1 ];then
-			echo -e "\n${bgreen} tinitçš„æµæ°´ç›®å½•flowå’Œlogçš„æ–‡ä»¶å·²åˆ é™¤...${end}"
+			echo -e "\n${bgreen} tinitµÄÁ÷Ë®Ä¿Â¼flowºÍlogµÄÎÄ¼şÒÑÉ¾³ı...${end}"
 		fi
 	fi
 	ssh trade@tinit "ls -l ~/tinit/flow ~/tinit/log"
-	echo -e "\n\n${green} æŒ‰ä»»æ„é”®åˆ é™¤tkernel1çš„dumpæ–‡ä»¶...${end}"
+	echo -e "\n\n${green} °´ÈÎÒâ¼üÉ¾³ıtkernel1µÄdumpÎÄ¼ş...${end}"
 	read -s -n1
 	if [ `ssh trade@tkernel1 "ls -l ~/tkernel1/dump |wc -l"` == 1 ];then
-		echo -e "\n${bgreen} dumpç›®å½•çš„æ–‡ä»¶å·²åˆ é™¤...${end}"
+		echo -e "\n${bgreen} dumpÄ¿Â¼µÄÎÄ¼şÒÑÉ¾³ı...${end}"
 	else
 		ssh trade@tkernel1 "rm ~/tkernel1/dump/*"
 		if [ `ssh trade@tkernel1 "ls -l ~/tkernel1/dump |wc -l"` == 1 ];then
-			echo -e "\n${bgreen} dumpç›®å½•çš„æ–‡ä»¶å·²åˆ é™¤...${end}"
+			echo -e "\n${bgreen} dumpÄ¿Â¼µÄÎÄ¼şÒÑÉ¾³ı...${end}"
 		fi
 	fi
 	_anykey
 }
 function _setlisttomy(){
-	echo -e "\n${green} æŒ‰ä»»æ„é”®,ä¿®æ”¹listæ–‡ä»¶åˆ°å†’çƒŸæ¨¡å¼.....  ${end}"
+	echo -e "\n${green} °´ÈÎÒâ¼ü,ĞŞ¸ÄlistÎÄ¼şµ½Ã°ÑÌÄ£Ê½.....  ${end}"
 	read -s -n1
 	if [ ! -f ${listmy} ];then
 		cp ~/shell/list ${listmy}
@@ -123,195 +129,351 @@ function _setlisttomy(){
 		cp ${listmy} ~/shell/list
 	fi
 	if [ `cat ~/shell/list |grep -E 'tmdb|dbmt|tinit' |grep -E '^#' |wc -l` == 3 ];then
-		echo -e "\n\n${green} tmdb/dbmt/tinitç»„ä»¶å·²æ³¨é‡Š...${end}\n"
+		echo -e "\n\n${green} tmdb/dbmt/tinit×é¼şÒÑ×¢ÊÍ...${end}\n"
 		cat ~/shell/list |grep -E 'tmdb|dbmt|tinit' 
 	fi
 	_systemStatusCheck
 }
 function _setlisttosc(){
-	echo -e "\n${green} æŒ‰ä»»æ„é”®,æ¢å¤listæ–‡ä»¶åˆ°ç”Ÿäº§æ¨¡å¼.....  ${end}"
+	echo -e "\n${green} °´ÈÎÒâ¼ü,»Ö¸´listÎÄ¼şµ½Éú²úÄ£Ê½.....  ${end}"
 	read -s -n1
 	if [ ! -f ${listsc} ];then
-		echo -e "\n\n${red} è¿™ä¸ªæ–‡ä»¶ä¸å­˜åœ¨: ${listsc} ${end}\n"
+		echo -e "\n\n${red} Õâ¸öÎÄ¼ş²»´æÔÚ: ${listsc} ${end}\n"
 		exit 3
 	else
 		cp ${listsc} ~/shell/list	
 		if [ `cat ~/shell/list |grep -E '^tmdb|^dbmt|^tinit'|wc -l` == 3 ];then
-			echo -e "\n\n${bgreen} tmdb/dbmt/tinitç»„ä»¶æ³¨é‡Šå·²æ”¾å¼€...${end}\n"
+			echo -e "\n\n${bgreen} tmdb/dbmt/tinit×é¼ş×¢ÊÍÒÑ·Å¿ª...${end}\n"
 			cat ~/shell/list |grep -E '^tmdb|^dbmt|^tinit|csv$'
 		fi
 		_systemStatusCheck
 	fi
 }
-##å¯¼å‡ºCSVæ–‡ä»¶
+##µ¼³öCSVÎÄ¼ş
 function _expCSV(){
-	echo -e "\n\n${green} æŒ‰ä»»æ„é”®æ‰§è¡ŒCSVæ–‡ä»¶å¯¼å‡º...${end}"
+	echo -e "\n\n${green} °´ÈÎÒâ¼üÖ´ĞĞCSVÎÄ¼şµ¼³ö...${end}"
 	read -s -n1
 	ssh trade@tinit "cd ~/tinit/unldr && ./exportSync.sh"
 	if [ $?==0 ]; then
 		nextday=`ssh trade@tinit "tail ~/tinit/perf/t_DepthMarketData.csv"|cut -d, -f1|uniq`
-		echo -e "\n${bgreen} CSVæ–‡ä»¶å¯¼å‡ºå®Œæˆ...${end}"
+		echo -e "\n${bgreen} CSVÎÄ¼şµ¼³öÍê³É...${end}"
 	else
-		echo -e "\n${bred} CSVæ–‡ä»¶å¯¼å‡ºå¤±è´¥...${end}"
+		echo -e "\n${bred} CSVÎÄ¼şµ¼³öÊ§°Ü...${end}"
 	fi
 	_anykey
 }
-###æŸ¥çœ‹CSVæ–‡ä»¶çš„ä¸‹ä¸€äº¤æ˜“æ—¥æœŸ
+###²é¿´CSVÎÄ¼şµÄÏÂÒ»½»Ò×ÈÕÆÚ
 function _viewCSV(){
-	echo -e "\n${green} æŒ‰ä»»æ„é”®æŸ¥çœ‹t_DepthMarketData.csvæ–‡ä»¶...${end}"
+	echo -e "\n${green} °´ÈÎÒâ¼ü²é¿´t_DepthMarketData.csvÎÄ¼ş...${end}"
 	read -s -n1
 	ssh trade@tinit "tail ~/tinit/perf/t_DepthMarketData.csv"
 	_anykey
 }
-###å¯åŠ¨ç³»ç»Ÿ
+###Æô¶¯ÏµÍ³
 function _startSystem(){
 	${STARTSYS}
-	echo -e "\n${green} æŒ‰ä»»æ„é”®æ£€æŸ¥ç³»ç»ŸçŠ¶æ€...  ${end}"
+	echo -e "\n${green} °´ÈÎÒâ¼ü¼ì²éÏµÍ³×´Ì¬...  ${end}"
 	read -s -n1
 	_systemStatusCheck
 }
-###åˆå§‹åŒ–ç³»ç»Ÿ
+###³õÊ¼»¯ÏµÍ³
 function _initSystem(){
-	echo -ne "\n${green} è¯·ç™»å½•ticlientåˆå§‹åŒ–ç³»ç»Ÿ,"
+	echo -ne "\n${green} ÇëµÇÂ¼ticlient³õÊ¼»¯ÏµÍ³,"
 	tradingday=`ssh trade@tinit "tail ~/tinit/perf/t_DepthMarketData.csv"|cut -d, -f1|uniq`
-	echo -e " åˆå§‹åŒ–æ—¥æœŸæ˜¯:${end}${yellow} ${tradingday}${end}"
-	echo -ne "${green} åˆå§‹åŒ–å®Œæˆå,è¯·è¾“å…¥Yç¡®è®¤[Y/N]: ${end}"
+	echo -e " ³õÊ¼»¯ÈÕÆÚÊÇ:${end}${yellow} ${tradingday}${end}"
+	echo -ne "${green} ³õÊ¼»¯Íê³Éºó,ÇëÊäÈëYÈ·ÈÏ[Y/N]: ${end}"
 	while read tinit
 	do
 		if [ "${tinit}" == 'Y' ] || [ "${tinit}" == 'y' ];then
 			tinfo=`ssh trade@tinit "cat ~/tinit/log/Syslog.log" |grep -E "TinitOK"`
 			echo -e "\n\n ${tinfo}\n"
-			echo -e "\n${bgreen} ç³»ç»Ÿå·²å®Œæˆåˆå§‹åŒ–...${end}"
+			echo -e "\n${bgreen} ÏµÍ³ÒÑÍê³É³õÊ¼»¯...${end}"
 			break
 		elif [ "${tinit}" == 'N' ] || [ "${tinit}" == 'n' ];then
-			echo -ne "\n${green} è¯·ç¡®è®¤æ˜¯å¦å·²ç»åˆå§‹åŒ–ï¼Œåˆå§‹åŒ–å®Œæˆåè¾“å…¥[Y]è¿›è¡Œç¡®è®¤:  ${end}"
+			echo -ne "\n${green} ÇëÈ·ÈÏÊÇ·ñÒÑ¾­³õÊ¼»¯£¬³õÊ¼»¯Íê³ÉºóÊäÈë[Y]½øĞĞÈ·ÈÏ:  ${end}"
 		else
-			echo -ne "\n\n${bred} è¾“å…¥ä¿¡æ¯æœ‰è¯¯,è¯·æ£€æŸ¥è¾“å…¥å†…å®¹[Y/N]:  ${end}"
+			echo -ne "\n\n${bred} ÊäÈëĞÅÏ¢ÓĞÎó,Çë¼ì²éÊäÈëÄÚÈİ[Y/N]:  ${end}"
 		fi
 	done
 	_anykey
 }
-###å…³é—­ç³»ç»Ÿ
+###¹Ø±ÕÏµÍ³
 function _stopSystem(){
 	${STOPSYS}
-	echo -e "\n${green} æŒ‰ä»»æ„é”®æ£€æŸ¥ç³»ç»ŸçŠ¶æ€...  ${end}"
+	echo -e "\n${green} °´ÈÎÒâ¼ü¼ì²éÏµÍ³×´Ì¬...  ${end}"
 	read -s -n1
 	_systemStatusCheck
 }
-###æ£€æŸ¥check.txtæ–‡ä»¶
+###¼ì²écheck.txtÎÄ¼ş
 function _viewCheck(){
-	echo -e "\n${green} æŒ‰ä»»æ„é”®æŸ¥çœ‹check.txtæ–‡ä»¶...${end}"
+	echo -e "\n${green} °´ÈÎÒâ¼ü²é¿´check.txtÎÄ¼ş...${end}"
 	read -s -n1
 	ssh trade@tkernel1 "cat ~/tkernel1/dump/check.txt"
 	_anykey
 }
-###èµ„é‡‘å¯¹è´¦
-function _settlementCheck(){
 
-	echo -ne "\n\n${green} æ˜¯å¦è¿›è¡Œæ‰‹å·¥å¯¹å¸?é»˜è®¤ä¸º[Y]: ${end}"
+##µ¥¸öÍ¶×ÊÕß×Ê½ğ¶ÔÕÊ
+function _InvestorSettlementCheck(){
+	echo -ne "\n\n${green} µ¥¸öÍ¶×ÊÕß×Ê½ğ¶ÔÕÊ£¬ÇëÊäÈëÍ¶×ÊÕß×Ê½ğÕÊºÅ: ${end}"
+	read investor_no
+
+	###È¡µÃÊı¾İ¿âÖĞÌØ¶¨Í¶×ÊÕßµÄÈ¨Òæ
+	sysqy=`${SQLPLUS} -S ${connect}<<EOF
+	select to_char(sum(t.remain),'9999999999.99') from historysettlement.t_investorsettlement t where tradingday='${TRADINGDAY}' and t.accountid='${investor_no}';
+EOF`
+	test $DEBUG -gt 0 && echo ${sysqy}
+	sysqy=`echo ${sysqy} |awk -F '-*' '{print $2}' |tr -d ' '`
+	test $DEBUG -gt 0 && echo ${sysqy}
+	###È¡µÃÊı¾İ¿âÖĞµÄ¿ÉÓÃ×Ê½ğ
+	syskyzj=`${SQLPLUS} -s ${connect}<<EOF
+	select to_char(sum(t.withdrawquota),'9999999999.99') from historysettlement.t_investorsettlement t where tradingday='${TRADINGDAY}'  and t.accountid='${investor_no}';
+EOF`
+	syskyzj=`echo ${syskyzj} |awk -F '-*' '{print $2}' |tr -d ' '`
+	###È¡µÃÊı¾İ¿âÖĞµÄ±£Ö¤½ğ
+	sysbzj=`${SQLPLUS} -s ${connect} <<EOF
+	select to_char(sum(t.margin),'9999999999.99') from historysettlement.t_investorsettlement t where tradingday='${TRADINGDAY}' and t.accountid='${investor_no}';
+EOF`
+	sysbzj=`echo ${sysbzj} |awk -F '-*' '{print $2}' |tr -d ' '`
+	###È¡µÃÊı¾İ¿âÖĞµÄÂò³Ö²Ö
+	sysmai=`${SQLPLUS} -s ${connect} <<EOF
+	select sum(t.volume) from historysettlement.t_investorpositiondtl t where t.tradingday='${TRADINGDAY}' and t.direction='0' and t.accountid='${investor_no}';
+EOF`
+	sysmai=`echo ${sysmai} |awk -F '-*' '{print $2}' |tr -d ' '`
+	if [ "X${sysmai}" == "X" ];then
+		sysmai=0	###Èç¹ûÃ»ÓĞÂò³Ö²Ö£¬Ôò½«³Ö²ÖÊÖÊıÖÃÎª0
+	fi
+	###È¡µÃÊı¾İ¿âÖĞµÄÂô³Ö²Ö
+	sysmai4=`${SQLPLUS} -s ${connect} <<EOF
+	select sum(t.volume) from historysettlement.t_investorpositiondtl t where t.tradingday='${TRADINGDAY}' and t.direction='1' and t.accountid='${investor_no}';
+EOF`
+	sysmai4=`echo ${sysmai4} |awk -F '-*' '{print $2}' |tr -d ' '`
+	if [ X${sysmai4} == "X" ]
+	then
+		sysmai4=0	###Èç¹ûÃ»ÓĞÂô³Ö²Ö£¬Ôò½«³Ö²ÖÊÖÊıÖÃÎª0
+	fi	
+	###È¡µÃCSVÎÄ¼şÖĞµÄÈ¨Òæ
+	csvqy=`ssh tinit cat ~/tinit/perf/t_TradingAccount.csv|awk -F"," '{if(match($2,'${investor_no}')) print $6}'|cut -d\" -f2 |awk 'BEGIN {sum=0} {sum+=$1 }END {printf("%.2f\n", sum)}'`
+	###È¡µÃCSVÎÄ¼şÖĞµÄ¿ÉÓÃ×Ê½ğ
+	csvkyzj=`ssh tinit cat ~/tinit/perf/t_TradingAccount.csv|awk -F"," '{if(match($2,'${investor_no}')) print $5}'|cut -d\" -f2 |awk 'BEGIN {sum=0} {sum+=$1 }END {printf("%.2f\n", sum)}'`
+	###È¡µÃCSVÎÄ¼şÖĞµÄ±£Ö¤½ğ
+	csvbzj=`ssh tinit cat ~/tinit/perf/t_TradingAccount.csv|awk -F"," '{if(match($2,'${investor_no}')) print $7}'|cut -d\" -f2 |awk 'BEGIN {sum=0} {sum+=$1 }END {printf("%.2f\n", sum)}'`
+	###È¡µÃCSVÎÄ¼şÖĞµÄÂò³Ö²Ö
+	csvmai=`ssh tinit cat ~/tinit/perf/t_InvestorPositionDtl.csv | awk -F',' '{if(match($3,'${investor_no}')) print $5,"\t",$8}' |sed 's/"//g' |awk '{if($1==0) sum+=$2}END {print sum}'`
+	if [ X${csvmai} == "X" ]
+	then
+		csvmai=0
+	fi
+	###È¡µÃCSVÎÄ¼şÖĞµÄÂô³Ö²Ö
+	csvmai4=`ssh tinit cat ~/tinit/perf/t_InvestorPositionDtl.csv | awk -F',' '{if(match($3,'${investor_no}')) print $5,"\t",$8}' |sed 's/"//g' |awk '{if($1==1) sum+=$2}END {print sum}'`
+	if [ X${csvmai4} == "X" ]
+	then
+		csvmai4=0
+	fi
+	
+	if [ "${sysqy}" == "${csvqy}" ];then
+		echo -e "\n${green} Í¶×ÊÕßÈ¨ÒæÒ»ÖÂ,Í¶×ÊÕß¡¾${investor_no}¡¿µÄÈ¨ÒæÊÇ:  ${end}${yellow}${sysqy}${end}"
+	else
+		echo -e "\n${red} Í¶×Ê¶¼È¨Òæ²»Ò»ÖÂ,Êı¾İ¿âÖĞÍ¶×ÊÕß¡¾${investor_no}¡¿µÄÈ¨ÒæÊÇ:  ${end}${yellow}${sysqy}${end}${red} ,CSVÎÄ¼şÖĞÍ¶×ÊÕß¡¾${investor_no}¡¿µÄÈ¨ÒæÊÇ: ${end}${yellow}${csvqy}${end}"
+	fi
+	if [ "${syskyzj}" == "${csvkyzj}" ];then
+		echo -e "\n${green} Í¶×ÊÕß¿ÉÓÃ×Ê½ğÒ»ÖÂ,Í¶×ÊÕß¡¾${investor_no}¡¿µÄ¿ÉÓÃ×Ê½ğÊÇ:  ${end}${yellow}${syskyzj}${end}"
+	else
+		echo -e "\n${red} Í¶×ÊÕßµÄ¿ÉÓÃ×Ê½ğ²»Ò»ÖÂ,Êı¾İ¿âÖĞÍ¶×ÊÕß¡¾${investor_no}¡¿µÄ¿ÉÓÃ×Ê½ğÊÇ:  ${end}${yellow}${syskyzj}${end}${red} , CSVÎÄ¼şÖĞÍ¶×ÊÕß¡¾${investor_no}¡¿µÄ¿ÉÓÃ×Ê½ğÊÇ: ${end}${yellow}${csvkyzj}${end}"
+	fi
+	if [ "${sysbzj}" == "${csvbzj}" ];then
+		echo -e "\n${green} Í¶×ÊÕß±£Ö¤½ğÒ»ÖÂ,Í¶×ÊÕß¡¾${investor_no}¡¿µÄ×Ü±£Ö¤½ğÊÇ:  ${end}${yellow}${sysbzj}${end}"
+	else
+		echo -e "\n${red} Í¶×ÊÕßµÄ×Ü±£Ö¤½ğ²»Ò»ÖÂ,Êı¾İ¿âÖĞÍ¶×ÊÕß¡¾${investor_no}¡¿µÄ±£Ö¤½ğÊÇ:  ${end}${yellow}${syszj}${end}${red} , CSVÎÄ¼şÖĞÍ¶×ÊÕß¡¾${investor_no}¡¿µÄ±£Ö¤½ğÊÇ: ${end}${yellow}${csvzj}${end}"
+	fi
+	if [ "${sysmai}" == "${csvmai}" ];then
+		echo -e "\n${green} Í¶×ÊÕßÂò³Ö²ÖÒ»ÖÂ,Í¶×ÊÕß¡¾${investor_no}¡¿µÄ×ÜÂò³Ö²Ö:  ${end}${yellow}${sysmai}${end}"
+	else
+		echo -e "\n${red} Í¶×ÊÕßµÄÂò³Ö²Ö²»Ò»ÖÂ,Êı¾İ¿âÖĞÍ¶×ÊÕß¡¾${investor_no}¡¿µÄ×ÜÂò³Ö²ÖÊÇ:  ${end}${yellow}${sysmai}${end}${red} ,CSVÎÄ¼şÖĞÍ¶×ÊÕß¡¾${investor_no}¡¿µÄ×ÜÂò³Ö²ÖÊÇ: ${end}${yellow}${csvmai}${end}"
+	fi
+	if [ "${sysmai4}" == "${csvmai4}" ];then
+		echo -e "\n${green} Í¶×ÊÕßÂô³Ö²ÖÒ»ÖÂ,Í¶×ÊÕß¡¾${investor_no}¡¿µÄ×ÜÂô³Ö²Ö:  ${end}${yellow}${sysmai4}${end}"
+	else
+		echo -e "\n${red} Í¶×ÊÕßµÄÂô³Ö²Ö²»Ò»ÖÂ,Êı¾İ¿âÖĞÍ¶×ÊÕß¡¾${investor_no}¡¿µÄ×ÜÂô³Ö²ÖÊÇ:  ${end}${yellow}${sysmai4}${end}${red} ,CSVÎÄ¼şÖĞÍ¶×ÊÕß¡¾${investor_no}¡¿µÄ×ÜÂô³Ö²ÖÊÇ: ${end}${yellow}${csvmai4}${end}"
+	fi
+	if [ "${sysqy}" == "${csvqy}" ] && [ "${syskyzj}" == "${csvkyzj}" ] && [ "${sysbzj}" == "${csvbzj}" ] && [ "${sysmai}" == "${csvmai}" ] && [ "${sysmai4}" == "${csvmai4}" ]; then
+		echo -e "\n${yellow} Í¶×ÊÕß¡¾${investor_no}¡¿×Ê½ğ¶ÔÕÊÍê³É...${end}"
+		echo -en "\n${green} ÊÇ·ñ¼ÌĞø½øĞĞÆäËûÍ¶×ÊÕß×Ê½ğ¶ÔÕÊ¡¾y/n¡¿£º ${end}"
+		read nchs
+		if [ "${nchs}" == 'Y' ] || [ "${nchs}" == 'y' ];then
+			_InvestorSettlementCheck
+		fi
+	else
+		echo -e "\n${bred} ×Ê½ğ¶ÔÕÊ³öÏÖÎÊÌâ,Çë×ĞÏ¸¼ì²é...${end}\n\n"
+		exit 5;
+	fi
+	echo -e "\n\n${red} ½¨Òé×ÔĞĞĞ£ÑéÒ»ÏÂ×Ê½ğ¶ÔÕÊÇé¿ö....  ${end}"	
+	_anykey
+}
+
+###×Ê½ğ¶ÔÕË
+function _settlementCheck(){
+	echo -ne "\n\n${green} ÊÇ·ñ½øĞĞÊÖ¹¤¶ÔÕÊ?Ä¬ÈÏÎª[Y]: ${end}"
 	read chs
 	if [ "${chs}" == 'N' ] || [ "${chs}" == 'n' ];then
-		echo -e "${byellow} ç³»ç»Ÿå¯¹å¸åªæ ¸å¯¹æŠ•èµ„è€…æ€»æƒç›Šã€å¯ç”¨èµ„é‡‘ã€ä¿è¯é‡‘åŠæ€»æŒä»“  ${end}"
-		###å–å¾—æ•°æ®åº“ä¸­çš„æƒç›Š
+		echo -e "${byellow} ÏµÍ³¶ÔÕÊÖ»ºË¶ÔÍ¶×ÊÕß×ÜÈ¨Òæ¡¢¿ÉÓÃ×Ê½ğ¡¢±£Ö¤½ğ¼°×Ü³Ö²Ö  ${end}"
+		###È¡µÃÊı¾İ¿âÖĞµÄÈ¨Òæ
 		sysqy=`${SQLPLUS} -S ${connect}<<EOF
 		select to_char(sum(t.remain),'9999999999.99') from historysettlement.t_investorsettlement t where tradingday='${TRADINGDAY}';
 EOF`
 		test $DEBUG -gt 0 && echo ${sysqy}
 		sysqy=`echo ${sysqy} |awk -F '-*' '{print $2}' |tr -d ' '`
 		test $DEBUG -gt 0 && echo ${sysqy}
-		###å–å¾—æ•°æ®åº“ä¸­çš„å¯ç”¨èµ„é‡‘
+		###È¡µÃÊı¾İ¿âÖĞµÄ¿ÉÓÃ×Ê½ğ
 		syskyzj=`${SQLPLUS} -s ${connect}<<EOF
 		select to_char(sum(t.withdrawquota),'9999999999.99') from historysettlement.t_investorsettlement t where tradingday='${TRADINGDAY}';
 EOF`
 		syskyzj=`echo ${syskyzj} |awk -F '-*' '{print $2}' |tr -d ' '`
-		###å–å¾—æ•°æ®åº“ä¸­çš„ä¿è¯é‡‘
+		###È¡µÃÊı¾İ¿âÖĞµÄ±£Ö¤½ğ
 		sysbzj=`${SQLPLUS} -s ${connect} <<EOF
 		select to_char(sum(t.margin),'9999999999.99') from historysettlement.t_investorsettlement t where tradingday='${TRADINGDAY}';
 EOF`
 		sysbzj=`echo ${sysbzj} |awk -F '-*' '{print $2}' |tr -d ' '`
-		###å–å¾—æ•°æ®åº“ä¸­çš„ä¹°æŒä»“
+		###È¡µÃÊı¾İ¿âÖĞµÄÂò³Ö²Ö
 		sysmai=`${SQLPLUS} -s ${connect} <<EOF
-		select sum(t.btotalamt) from historysettlement.t_investorpositiondtl t where t.tradingday='${TRADINGDAY}';
+	select sum(t.volume) from historysettlement.t_investorpositiondtl t where t.tradingday='${TRADINGDAY}' and t.direction='0';
 EOF`
 		sysmai=`echo ${sysmai} |awk -F '-*' '{print $2}' |tr -d ' '`
-		###å–å¾—æ•°æ®åº“ä¸­çš„å–æŒä»“
+		###È¡µÃÊı¾İ¿âÖĞµÄÂô³Ö²Ö
 		sysmai4=`${SQLPLUS} -s ${connect} <<EOF
-		select sum(t.stotalamt) from historysettlement.t_investorpositiondtl t where t.tradingday='${TRADINGDAY}';
+		select sum(t.volume) from historysettlement.t_investorpositiondtl t where t.tradingday='${TRADINGDAY}' and t.direction='1';
 EOF`
 		sysmai4=`echo ${sysmai4} |awk -F '-*' '{print $2}' |tr -d ' '`
-		###å–å¾—CSVæ–‡ä»¶ä¸­çš„æƒç›Š
+		###È¡µÃCSVÎÄ¼şÖĞµÄÈ¨Òæ
 		csvqy=`ssh tinit cat ~/tinit/perf/t_TradingAccount.csv|awk -F"," '{if(NR>1) print $6}'|cut -d\" -f2 |awk 'BEGIN {sum=0} {sum+=$1 }END {printf("%.2f\n", sum)}'`
-		###å–å¾—CSVæ–‡ä»¶ä¸­çš„å¯ç”¨èµ„é‡‘
+		###È¡µÃCSVÎÄ¼şÖĞµÄ¿ÉÓÃ×Ê½ğ
 		csvkyzj=`ssh tinit cat ~/tinit/perf/t_TradingAccount.csv|awk -F"," '{if(NR>1) print $5}'|cut -d\" -f2 |awk 'BEGIN {sum=0} {sum+=$1 }END {printf("%.2f\n", sum)}'`
-		###å–å¾—CSVæ–‡ä»¶ä¸­çš„ä¿è¯é‡‘
+		###È¡µÃCSVÎÄ¼şÖĞµÄ±£Ö¤½ğ
 		csvbzj=`ssh tinit cat ~/tinit/perf/t_TradingAccount.csv|awk -F"," '{if(NR>1) print $7}'|cut -d\" -f2 |awk 'BEGIN {sum=0} {sum+=$1 }END {printf("%.2f\n", sum)}'`
-		###å–å¾—CSVæ–‡ä»¶ä¸­çš„ä¹°æŒä»“
+		###È¡µÃCSVÎÄ¼şÖĞµÄÂò³Ö²Ö
 		csvmai=`ssh tinit cat ~/tinit/perf/t_InvestorPositionDtl.csv | awk -F',' '{if(NR>1) print $5,"\t",$8}' |sed 's/"//g' |awk '{if($1==0) sum+=$2}END {print sum}'`
-		###å–å¾—CSVæ–‡ä»¶ä¸­çš„å–æŒä»“
+		###È¡µÃCSVÎÄ¼şÖĞµÄÂô³Ö²Ö
 		csvmai4=`ssh tinit cat ~/tinit/perf/t_InvestorPositionDtl.csv | awk -F',' '{if(NR>1) print $5,"\t",$8}' |sed 's/"//g' |awk '{if($1==1) sum+=$2}END {print sum}'`
 		
 		if [ "${sysqy}" == "${csvqy}" ];then
-			echo -e "\n${green} æŠ•èµ„è€…æƒç›Šä¸€è‡´,æ€»æƒç›Šæ˜¯:  ${end}${yellow}${sysqy}${end}"
+			echo -e "\n${green} Í¶×ÊÕßÈ¨ÒæÒ»ÖÂ,×ÜÈ¨ÒæÊÇ:  ${end}${yellow}${sysqy}${end}"
 		else
-			echo -e "\n${red} æŠ•èµ„éƒ½æƒç›Šä¸ä¸€è‡´,æ•°æ®åº“ä¸­çš„æƒç›Šæ˜¯:  ${end}${yellow}${sysqy}${end}${red} ,CSVæ–‡ä»¶ä¸­çš„æƒç›Šæ˜¯: ${end}${yellow}${csvqy}${end}"
+			echo -e "\n${red} Í¶×Ê¶¼È¨Òæ²»Ò»ÖÂ,Êı¾İ¿âÖĞµÄÈ¨ÒæÊÇ:  ${end}${yellow}${sysqy}${end}${red} ,CSVÎÄ¼şÖĞµÄÈ¨ÒæÊÇ: ${end}${yellow}${csvqy}${end}"
 		fi
 		if [ "${syskyzj}" == "${csvkyzj}" ];then
-			echo -e "\n${green} æŠ•èµ„è€…å¯ç”¨èµ„é‡‘ä¸€è‡´,å¯ç”¨èµ„é‡‘æ˜¯:  ${end}${yellow}${syskyzj}${end}"
+			echo -e "\n${green} Í¶×ÊÕß¿ÉÓÃ×Ê½ğÒ»ÖÂ,¿ÉÓÃ×Ê½ğÊÇ:  ${end}${yellow}${syskyzj}${end}"
 		else
-			echo -e "\n${red} æŠ•èµ„è€…çš„å¯ç”¨èµ„é‡‘ä¸ä¸€è‡´,æ•°æ®åº“ä¸­çš„å¯ç”¨èµ„é‡‘æ˜¯:  ${end}${yellow}${syskyzj}${end}${red} , CSVæ–‡ä»¶ä¸­çš„å¯ç”¨èµ„é‡‘æ˜¯: ${end}${yellow}${csvkyzj}${end}"
+			echo -e "\n${red} Í¶×ÊÕßµÄ¿ÉÓÃ×Ê½ğ²»Ò»ÖÂ,Êı¾İ¿âÖĞµÄ¿ÉÓÃ×Ê½ğÊÇ:  ${end}${yellow}${syskyzj}${end}${red} , CSVÎÄ¼şÖĞµÄ¿ÉÓÃ×Ê½ğÊÇ: ${end}${yellow}${csvkyzj}${end}"
 		fi
 		if [ "${sysbzj}" == "${csvbzj}" ];then
-			echo -e "\n${green} æŠ•èµ„è€…ä¿è¯é‡‘ä¸€è‡´,æ€»ä¿è¯é‡‘æ˜¯:  ${end}${yellow}${sysbzj}${end}"
+			echo -e "\n${green} Í¶×ÊÕß±£Ö¤½ğÒ»ÖÂ,×Ü±£Ö¤½ğÊÇ:  ${end}${yellow}${sysbzj}${end}"
 		else
-			echo -e "\n${red} æŠ•èµ„è€…çš„æ€»ä¿è¯é‡‘ä¸ä¸€è‡´,æ•°æ®åº“ä¸­çš„ä¿è¯é‡‘æ˜¯:  ${end}${yellow}${syszj}${end}${red} , CSVæ–‡ä»¶ä¸­çš„ä¿è¯é‡‘æ˜¯: ${end}${yellow}${csvzj}${end}"
+			echo -e "\n${red} Í¶×ÊÕßµÄ×Ü±£Ö¤½ğ²»Ò»ÖÂ,Êı¾İ¿âÖĞµÄ±£Ö¤½ğÊÇ:  ${end}${yellow}${syszj}${end}${red} , CSVÎÄ¼şÖĞµÄ±£Ö¤½ğÊÇ: ${end}${yellow}${csvzj}${end}"
 		fi
 		if [ "${sysmai}" == "${csvmai}" ];then
-			echo -e "\n${green} æŠ•èµ„è€…ä¹°æŒä»“ä¸€è‡´,æ€»ä¹°æŒä»“:  ${end}${yellow}${sysmai}${end}"
+			echo -e "\n${green} Í¶×ÊÕßÂò³Ö²ÖÒ»ÖÂ,×ÜÂò³Ö²Ö:  ${end}${yellow}${sysmai}${end}"
 		else
-			echo -e "\n${red} æŠ•èµ„è€…çš„ä¹°æŒä»“ä¸ä¸€è‡´,æ•°æ®åº“ä¸­çš„æ€»ä¹°æŒä»“æ˜¯:  ${end}${yellow}${sysmai}${end}${red} ,CSVæ–‡ä»¶ä¸­çš„æ€»ä¹°æŒä»“æ˜¯: ${end}${yellow}${csvmai}${end}"
+			echo -e "\n${red} Í¶×ÊÕßµÄÂò³Ö²Ö²»Ò»ÖÂ,Êı¾İ¿âÖĞµÄ×ÜÂò³Ö²ÖÊÇ:  ${end}${yellow}${sysmai}${end}${red} ,CSVÎÄ¼şÖĞµÄ×ÜÂò³Ö²ÖÊÇ: ${end}${yellow}${csvmai}${end}"
 		fi
 		if [ "${sysmai4}" == "${csvmai4}" ];then
-			echo -e "\n${green} æŠ•èµ„è€…å–æŒä»“ä¸€è‡´,æ€»å–æŒä»“:  ${end}${yellow}${sysmai4}${end}"
+			echo -e "\n${green} Í¶×ÊÕßÂô³Ö²ÖÒ»ÖÂ,×ÜÂô³Ö²Ö:  ${end}${yellow}${sysmai4}${end}"
 		else
-			echo -e "\n${red} æŠ•èµ„è€…çš„å–æŒä»“ä¸ä¸€è‡´,æ•°æ®åº“ä¸­çš„æ€»å–æŒä»“æ˜¯:  ${end}${yellow}${sysmai4}${end}${red} ,CSVæ–‡ä»¶ä¸­çš„æ€»å–æŒä»“æ˜¯: ${end}${yellow}${csvmai4}${end}"
+			echo -e "\n${red} Í¶×ÊÕßµÄÂô³Ö²Ö²»Ò»ÖÂ,Êı¾İ¿âÖĞµÄ×ÜÂô³Ö²ÖÊÇ:  ${end}${yellow}${sysmai4}${end}${red} ,CSVÎÄ¼şÖĞµÄ×ÜÂô³Ö²ÖÊÇ: ${end}${yellow}${csvmai4}${end}"
 		fi
 		if [ "${sysqy}" == "${csvqy}" ] && [ "${syskyzj}" == "${csvkyzj}" ] && [ "${sysbzj}" == "${csvbzj}" ] && [ "${sysmai}" == "${csvmai}" ] && [ "${sysmai4}" == "${csvmai4}" ]; then
-			echo -e "\n${green} èµ„é‡‘å¯¹å¸å®Œæˆ...${end}"
-			echo -e "\n\n${red} å»ºè®®è‡ªè¡Œæ ¡éªŒä¸€ä¸‹èµ„é‡‘å¯¹å¸æƒ…å†µ....  ${end}"
+			echo -ne "\n\n${green} ÊÇ·ñ½øĞĞµ¥¸öÍ¶×ÊÕß×Ê½ğ¶ÔÕÊ?Ä¬ÈÏÎª[N]: ${end}"
+			read chs
+			if [ "${chs}" == 'Y' ] || [ "${chs}" == 'y' ];then
+				_InvestorSettlementCheck
+			fi
+			echo -e "\n${green} ×Ê½ğ¶ÔÕÊÍê³É...${end}"
+			echo -e "\n\n${red} ½¨Òé×ÔĞĞĞ£ÑéÒ»ÏÂ×Ê½ğ¶ÔÕÊÇé¿ö....  ${end}"
 		else
-			echo -e "\n${bred} èµ„é‡‘å¯¹å¸å‡ºç°é—®é¢˜,è¯·ä»”ç»†æ£€æŸ¥...${end}\n\n"
+			echo -e "\n${bred} ×Ê½ğ¶ÔÕÊ³öÏÖÎÊÌâ,Çë×ĞÏ¸¼ì²é...${end}\n\n"
 			exit 5;
 		fi
 	else
-		echo -e "\n\n${bgreen} è¯·ç™»å½•ThostUserå’ŒFLEXå¹³å°,è¿›è¡Œèµ„é‡‘å¯¹å¸!!!"
-		echo -ne " å¯¹å¸å®Œæˆåè¯·è¾“å…¥[Y]è¿›è¡Œç¡®è®¤[Y/N]:  ${end}"	
+		echo -e "\n\n${bgreen} ÇëµÇÂ¼ThostUserºÍFLEXÆ½Ì¨,½øĞĞ×Ê½ğ¶ÔÕÊ!!!"
+		echo -ne " ¶ÔÕÊÍê³ÉºóÇëÊäÈë[Y]½øĞĞÈ·ÈÏ[Y/N]:  ${end}"	
 		while read -n1 setcheck
 		do
 			if [ "${setcheck}" == 'Y' ] || [ "${setcheck}" == 'y' ];then
-				echo -e "\n\n${green} èµ„é‡‘å¯¹è´¦å®Œæˆ...${end}"
+				echo -e "\n\n${green} ×Ê½ğ¶ÔÕËÍê³É...${end}"
 				break
 			elif [ "${setcheck}" == 'N' ] || [ "${setcheck}" == 'n' ];then
-				echo -e "\n\n${yellow} è¯·ç­‰å¾…èµ„é‡‘å¯¹å¸æ˜¯å¦å®Œæˆ...,è¾“å…¥[X]é€€å‡ºç¨‹åº."
-				echo -ne " å¯¹å¸å®Œæˆåè¯·è¾“å…¥[Y]è¿›è¡Œç¡®è®¤[Y/N/X]:  ${end}"
+				echo -e "\n\n${yellow} ÇëµÈ´ı×Ê½ğ¶ÔÕÊÊÇ·ñÍê³É...,ÊäÈë[X]ÍË³ö³ÌĞò."
+				echo -ne " ¶ÔÕÊÍê³ÉºóÇëÊäÈë[Y]½øĞĞÈ·ÈÏ[Y/N/X]:  ${end}"
 			elif [ "${setcheck}" == 'X' ] || [ "${setcheck}" == 'x' ];then
-				echo -e "\n\n${red} å¯¹å¸æœªç¡®è®¤,ä½ é€‰æ‹©äº†é€€å‡º...${end}"
+				echo -e "\n\n${red} ¶ÔÕÊÎ´È·ÈÏ,ÄãÑ¡ÔñÁËÍË³ö...${end}"
 				break
 			else
-				echo -ne "\n\n${bred} è¾“å…¥ä¿¡æ¯æœ‰è¯¯,è¯·æ£€æŸ¥è¾“å…¥å†…å®¹[Y/N/X]:${end}  "
+				echo -ne "\n\n${bred} ÊäÈëĞÅÏ¢ÓĞÎó,Çë¼ì²éÊäÈëÄÚÈİ[Y/N/X]:${end}  "
 			fi
 		done
 	fi
 	_anykey
 }
+function _cleanOfferFlow(){
+##	for offer in ${OFFERLIST}
+##	do
+##		${STARTSYS} ${offer}
+##	done
+	echo -e "²é¿´listÎÄ¼şÄÚÈİ"
+	_anykey
+	if [ ! -f ${listbp} ] 
+	then
+		echo -e "${red}¡¾${listbp}¡¿ÎÄ¼ş²»´æÔÚ...${end}"
+	else
+		cp ${listbp} ~/shell/list
+		cat ~/shell/list |grep -Ev '#'
+	fi
+		
+	echo -e "²é¿´ÏµÍ³×´Ì¬..."
+	_anykey
+	${SHOWSYS}
+	
+	echo -e "Æô¶¯ÏµÍ³..."
+	_anykey
+	${STARTSYS}
+	
+	echo -e "²é¿´ÏµÍ³×´Ì¬..."
+	_anykey
+	${SHOWSYS}	
+	
+	echo -e "Í£Ö¹ÏµÍ³..."
+	_anykey
+	${STOPSYS}
+	
+	echo -e "ÇåÀí±¨ÅÌÁ÷Ë®..."
+	_anykey
+	ecall.sh clean
+	
+	echo -e "²é¿´ÏµÍ³×´Ì¬..."
+	_anykey
+	${SHOWSYS}
+
+	echo -e "²é¿´±¨ÅÌ³ÌĞòÁ÷Ë®..."
+	_anykey
+	for i in ${OFFERLIST}
+	do
+		ssh ${i}1 ls -lh ${i}1/flow
+		ssh ${i}2 ls -lh ${i}2/flow
+	done
+	_anykey
+
+	_setlisttosc	
+	_anykey
+}
 function menu(){
 	echo -e "\n\n${yellow}"
-	echo -e "\t\t1.æ£€æŸ¥ç³»ç»ŸçŠ¶æ€\t"
-	echo -e "\t\t2.å†’çƒŸå‰å‡†å¤‡\t"
-    echo -e "\t\t3.å¼€å§‹å†’çƒŸ\t" 
-    echo -e "\t\t4.ç»“æŸå†’çƒŸ\t"
-    test $DEBUG -gt 0 && echo -e "\t\t5.èµ„é‡‘å¯¹å¸\t"
-    echo -e "\t\t0.é€€å‡º\t" 
-	echo -ne "\t\tè¯·é€‰æ‹©æ“ä½œ: ${end}"
+	echo -e "\t\t1.¼ì²éÏµÍ³×´Ì¬\t"
+	echo -e "\t\t2.Ã°ÑÌÇ°×¼±¸\t"
+    echo -e "\t\t3.¿ªÊ¼Ã°ÑÌ\t" 
+    echo -e "\t\t4.½áÊøÃ°ÑÌ\t"
+    test $DEBUG -gt 0 && echo -e "\t\t5.×Ê½ğ¶ÔÕÊ\t"
+	test $DEBUG -gt 0 && echo -e "\t\t6.Í¶×ÊÕß×Ê½ğ¶ÔÕÊ\t"
+	test $DEBUG -gt 0 && echo -e "\t\t7.±¨ÅÌÆô¶¯²âÊÔ\t"
+    echo -e "\t\t0.ÍË³ö\t" 
+	echo -ne "\t\tÇëÑ¡Ôñ²Ù×÷: ${end}"
 }
 if [ $* > 0 ];then
 	echo -e "Usage:\.\/$basename"
@@ -340,17 +502,23 @@ do
 	;;
 	4)	_stopSystem
 		_cleanFlowFiles
-		_setlisttosc
+		_cleanOfferFlow
 		menu
 	;;
 	5)	_settlementCheck
+		menu
+	;;
+	6|8) _InvestorSettlementCheck
+		menu
+	;;
+	7) _cleanOfferFlow
 		menu
 	;;
 	0)
 		exit 0
 	;;
 	*)	clear
-		echo -e "\n\n${bred}è¾“å…¥çš„å‚æ•°æœ‰è¯¯,è¯·é‡æ–°é€‰æ‹©ï¼  ${end}"
+		echo -e "\n\n${bred}ÊäÈëµÄ²ÎÊıÓĞÎó,ÇëÖØĞÂÑ¡Ôñ£¡  ${end}"
 		menu
 	esac
 done | ${LOGED}
