@@ -9,7 +9,7 @@ do
 	echo
 	if [ $ch == 'Y' ] || [ $ch == 'y' ]
 	then
-	   chkconfig $i off 2>&1|${logfile}
+	   chkconfig --level 2345 $i off 2>&1|${logfile}
 	else
 	   echo "You cancel the STOP action!"
 	fi
