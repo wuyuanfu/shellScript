@@ -3,7 +3,7 @@
 ##Date 2013-09-16
 ##Version 20131012-1
 ##ChangLog
-#### 20131012-1  更改流水备份目录存放在组件的安装目录的FLOWBACKUP目录
+#### 20131012-1  鏇存敼娴佹按澶囦唤鐩綍瀛樻斁鍦ㄧ粍浠剁殑瀹夎鐩綍鐨凢LOWBACKUP鐩綍
 
 PWD=`cat ~/shell/sh.cfg|grep passwd|cut -d= -f2`
 if [ "x$1" == "x" ];then
@@ -39,7 +39,7 @@ if [ "$1" == "makebackuppath" ];then
 	exit
 fi
 function fileCheck(){
-	for file in $(ssh $1 "ls -l ~/$1/$2/$3/$4/")
+	for file in $(ssh $1 "ls  ~/$1/$2/$3/$4/")
 	do
 		md5A=$(ssh $1 "md5sum ~/$1/$2/$3/$4/$file |awk '{print $1}'")
 		md5B=$(ssh $1 "md5sum ~/$1/$4/$file |awk '{print $1}'")
@@ -58,7 +58,7 @@ then
 	stty echo
 	if [ "$inpwd" = "$PWD" ]
 	then
-########调用ecall.sh清理流水
+########璋冪敤ecall.sh娓呯悊娴佹按
 		ecall.sh clean
 		while read line <&3
 		do
@@ -67,19 +67,19 @@ then
 			list="${name}${num}"
 			if [ "${num}" != "csv" ];then
 				echo "Restore the flow and log files of  ${list} ,Please waitting..."
-#################恢复flow流水文件
+#################鎭㈠flow娴佹按鏂囦欢
 				ssh ${list} "cp -vpf ~/${list}/${BACKUPPATH}/${BAKPATH}/flow/* ~/${list}/flow"
 				fileCheck ${list} ${BACKUPPATH} ${BAKPATH} flow
-#################恢复log日志文件				
+#################鎭㈠log鏃ュ織鏂囦欢				
 				ssh ${list} "cp -vpf ~/${list}/${BACKUPPATH}/${BAKPATH}/log/* ~/${list}/log"
 				fileCheck ${list} ${BACKUPPATH} ${BAKPATH} log				
 				echo -e "Restore ${list}'s flow and log completed"
 			else
 				echo "Restore the flow and log files of  ${name} ,Please waitting..."
-#################恢复flow流水文件
+#################鎭㈠flow娴佹按鏂囦欢
 				ssh ${name} "cp -vpf ~/${name}/${BACKUPPATH}/${BAKPATH}/flow/* ~/${name}/flow"
 				fileCheck ${name} ${BACKUPPATH} ${BAKPATH} flow				
-#################恢复log日志文件				
+#################鎭㈠log鏃ュ織鏂囦欢				
 				ssh ${name} "cp -vpf ~/${name}/${BACKUPPATH}/${BAKPATH}/log/* ~/${name}/log"
 				fileCheck ${name} ${BACKUPPATH} ${BAKPATH} log				
 				echo -e "Restore ${name}\'s flow and log completed"
