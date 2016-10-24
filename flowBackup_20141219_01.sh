@@ -1,12 +1,12 @@
 #!/bin/bash
 ##Create by wuyuanfu 
 ##Date 2013-10-12
-##Version 20131012-1
-## Çë°Ñ½Å±¾·ÅÔÚconfig»úµÄasptoolsÄ¿Â¼£¬Ìí¼ÓÖ´ÐÐÈ¨ÏÞ¡£
-## µÚÒ»´Î±¸·ÝÖ®Ç°ÇëÏÈÖ´ÐÐflowBackup.sh makebackuppath´´½¨Á÷Ë®±¸·ÝÄ¿Â¼
+##Version 20161024-1
+## è¯·æŠŠè„šæœ¬æ”¾åœ¨configæœºçš„asptoolsç›®å½•ï¼Œæ·»åŠ æ‰§è¡Œæƒé™ã€‚
+## ç¬¬ä¸€æ¬¡å¤‡ä»½ä¹‹å‰è¯·å…ˆæ‰§è¡ŒflowBackup.sh makebackuppathåˆ›å»ºæµæ°´å¤‡ä»½ç›®å½•
 ##ChangeLog
-## 20131012-1  ¸ü¸ÄÁ÷Ë®±¸·ÝÄ¿Â¼´æ·ÅÔÚ×é¼þµÄ°²×°Ä¿Â¼µÄFLOWBACKUPÄ¿Â¼,
-###			   Í¬Ê±Ôö¼Ó±¸·ÝÍê³ÉÈ·ÈÏ±êÖ¾£¬±ÜÃâÖØ¸´±¸·ÝÊ±£¬²âÊÔÁ÷Ë®¸²¸ÇÕýÊ½Á÷Ë®¡£
+## 20131012-1  æ›´æ”¹æµæ°´å¤‡ä»½ç›®å½•å­˜æ”¾åœ¨ç»„ä»¶çš„å®‰è£…ç›®å½•çš„FLOWBACKUPç›®å½•,
+###			   åŒæ—¶å¢žåŠ å¤‡ä»½å®Œæˆç¡®è®¤æ ‡å¿—ï¼Œé¿å…é‡å¤å¤‡ä»½æ—¶ï¼Œæµ‹è¯•æµæ°´è¦†ç›–æ­£å¼æµæ°´ã€‚
 BAKPATH=`date +%Y%m%d-%H%M%S`
 ndays=7
 DATE=`date +%Y%m%d`
@@ -30,9 +30,10 @@ function makebackuppath(){
 			echo -e "Backup directory of ${name} ,~/${name}/${BACKUPPATH} has been created!\n"		
 		fi
 	done
+  echo "function makebackuppath:$BAKPATH" >>~/asptools/log/flowBackup.log
 }
 function fileCheck(){
-	for file in $(ssh $1 "ls -l ~/$1/$2/$3/$4/ |awk '{print $9}'")
+	for file in $(ssh $1 "ls ~/$1/$2/$3/$4/")
 	do
 		md5A=$(ssh $1 "md5sum ~/$1/$2/$3/$4/$file |awk '{print $1}'")
 		md5B=$(ssh $1 "md5sum ~/$1/$4/$file |awk '{print $1}'")
@@ -60,28 +61,28 @@ if [ -e .backuped_${DATE} ];then
 			list="${name}${num}"
 			if [ "${num}" != "csv" ];then
 				echo "Backup the flow and log files of ${list}, Please waitting..."
-##################É¾³ýÀúÊ·±¸·ÝÎÄ¼þ
+##################åˆ é™¤åŽ†å²å¤‡ä»½æ–‡ä»¶
 ############### ssh ${list} "rm -rf ~/${list}/${flowpath}/* ~/${list}/${logpath}/*"  
 				ssh ${list} "find ~/${list}/${BACKUPPATH}/* -mtime +${ndays} -type d |xargs rm -rf" 
-##################±¸·ÝflowÄ¿Â¼
+##################å¤‡ä»½flowç›®å½•
 				ssh ${list} "mkdir -pv ~/${list}/${BACKUPPATH}/${BAKPATH}/flow"
 				ssh ${list} "cp -vp ~/${list}/flow/* ~/${list}/${BACKUPPATH}/${BAKPATH}/flow/"	
 				fileCheck ${list} ${BACKUPPATH} ${BAKPATH} flow				
-##################±¸·ÝlogÄ¿Â¼
+##################å¤‡ä»½logç›®å½•
 				ssh ${list} "mkdir -pv ~/${list}/${BACKUPPATH}/${BAKPATH}/log"
 				ssh ${list} "cp -vp ~/${list}/log/* ~/${list}/${BACKUPPATH}/${BAKPATH}/log"
 				fileCheck ${list} ${BACKUPPATH} ${BAKPATH} log
 				echo -e "Backup ${list}\'s flow and log completed"
 			else
 				echo "Backup the flow and log files of ${name}, Please waitting..."
-##################É¾³ýÀúÊ·±¸·ÝÎÄ¼þ
+##################åˆ é™¤åŽ†å²å¤‡ä»½æ–‡ä»¶
 ############### ssh ${name} "rm -rf ~/${name}/${flowpath}/* ~/${name}/${logpath}/*"  
 				ssh ${name} "find ~/${name}/${BACKUPPATH}/* -mtime +${ndays} -type d |xargs rm -rf" 
-##################±¸·ÝflowÄ¿Â¼
+##################å¤‡ä»½flowç›®å½•
 				ssh ${name} "mkdir -pv ~/${name}/${BACKUPPATH}/${BAKPATH}/flow"
 				ssh ${name} "cp -vp ~/${name}/flow/* ~/${name}/${BACKUPPATH}/${BAKPATH}/flow/"
 				fileCheck ${name} ${BACKUPPATH} ${BAKPATH} flow				
-##################±¸·ÝlogÄ¿Â¼
+##################å¤‡ä»½logç›®å½•
 				ssh ${name} "mkdir -pv ~/${name}/${BACKUPPATH}/${BAKPATH}/log"
 				ssh ${name} "cp -vp ~/${name}/log/* ~/${name}/${BACKUPPATH}/${BAKPATH}/log"
 				fileCheck ${name} ${BACKUPPATH} ${BAKPATH} log
@@ -100,28 +101,28 @@ else
 		list="${name}${num}"
 		if [ "${num}" != "csv" ];then
 			echo "Backup the flow and log files of ${list}, Please waitting..."
-##################É¾³ýÀúÊ·±¸·ÝÎÄ¼þ
+##################åˆ é™¤åŽ†å²å¤‡ä»½æ–‡ä»¶
 ############### ssh ${list} "rm -rf ~/${list}/${flowpath}/* ~/${list}/${logpath}/*"  
 			ssh ${list} "find ~/${list}/${BACKUPPATH}/* -mtime +${ndays} -type d |xargs rm -rf" 
-##################±¸·ÝflowÄ¿Â¼
+##################å¤‡ä»½flowç›®å½•
 			ssh ${list} "mkdir -pv ~/${list}/${BACKUPPATH}/${BAKPATH}/flow"
 			ssh ${list} "cp -vp ~/${list}/flow/* ~/${list}/${BACKUPPATH}/${BAKPATH}/flow/"
 			fileCheck ${list} ${BACKUPPATH} ${BAKPATH} flow			
-##################±¸·ÝlogÄ¿Â¼
+##################å¤‡ä»½logç›®å½•
 			ssh ${list} "mkdir -pv ~/${list}/${BACKUPPATH}/${BAKPATH}/log"
 			ssh ${list} "cp -vp ~/${list}/log/* ~/${list}/${BACKUPPATH}/${BAKPATH}/log"
 			fileCheck ${list} ${BACKUPPATH} ${BAKPATH} log
 			echo -e "Backup ${list}\'s flow and log completed"
 		else
 			echo "Backup the flow and log files of ${name}, Please waitting..."
-##################É¾³ýÀúÊ·±¸·ÝÎÄ¼þ
+##################åˆ é™¤åŽ†å²å¤‡ä»½æ–‡ä»¶
 ############### ssh ${name} "rm -rf ~/${name}/${flowpath}/* ~/${name}/${logpath}/*"  
 			ssh ${name} "find ~/${name}/${BACKUPPATH}/* -mtime +${ndays} -type d |xargs rm -rf" 
-##################±¸·ÝflowÄ¿Â¼
+##################å¤‡ä»½flowç›®å½•
 			ssh ${name} "mkdir -pv ~/${name}/${BACKUPPATH}/${BAKPATH}/flow"
 			ssh ${name} "cp -vp ~/${name}/flow/* ~/${name}/${BACKUPPATH}/${BAKPATH}/flow/"
 			fileCheck ${name} ${BACKUPPATH} ${BAKPATH} flow			
-##################±¸·ÝlogÄ¿Â¼
+##################å¤‡ä»½logç›®å½•
 			ssh ${name} "mkdir -pv ~/${name}/${BACKUPPATH}/${BAKPATH}/log"
 			ssh ${name} "cp -vp ~/${name}/log/* ~/${name}/${BACKUPPATH}/${BAKPATH}/log"
 			fileCheck ${name} ${BACKUPPATH} ${BAKPATH} log
@@ -131,4 +132,5 @@ else
 	done >>~/asptools/log/flowBackup_${DATE}
 fi
 touch .backuped_${DATE}
+echo "flowBackup at :${BAKPATH}">>~/asptools/log/flowBackup.log
 exec 3>&- 
